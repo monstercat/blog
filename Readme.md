@@ -23,7 +23,7 @@ This file contains the first 2 posts metadata.
 
 This file describes the number of pages, pagination limits, total post count.
 
-#### /json/archive/page/*X*.json
+#### /json/archive/page/**X**.json
 
 This contains all the posts meta data that are found for X page.
 
@@ -31,12 +31,12 @@ This contains all the posts meta data that are found for X page.
 
 This contains a list of all the tags.
 
-#### /json/tags/*TAG*/index.json
+#### /json/tags/**TAG**/index.json
 
 This file describes the number of pages, pagination limits, total post count for
 the TAG.
 
-#### /json/tags/*TAG*/page/*X*.json
+#### /json/tags/**TAG**/page/**X**.json
 
 This contains all the posts meta data that are found for X page for TAG.
 
@@ -50,7 +50,7 @@ Includes excerpts in the meta data by looking for the first markdown paragraph.
 
 ### Notes 
 
- * Posts are all sorted by recend date.
+ * Posts are all sorted by recent date.
  * Tags are a meta value simply separated by commas.
  * It is expected that images are hosted separately. We use an assets server.
  * It looks for markdown in `src/posts`.
