@@ -32,6 +32,12 @@ function mapPost(post) {
   return obj;
 }
 
+function sortPost(a, b) {
+  if (a.date > b.date) return -1;
+  if (a.date < b.date) return 1;
+  return 0;
+}
+
 function buildTagMap(arr) {
   var map = {};
   for (var i=0;i<arr.length;i++) {
@@ -57,7 +63,7 @@ module.exports = function(opts){
   var perpage  = opts.perpage || 7;
   return function(files, metalsmith, done){
     setImmediate(done);
-    var arr = metalsmith.metadata().posts.map(mapPost);
+    var arr = metalsmith.metadata().posts.map(mapPost).sort(sortPost);
     var tagmap = buildTagMap(arr);
     var pages = Math.ceil(arr.length / perpage);
     for (var i=0; i<pages; i++) {
