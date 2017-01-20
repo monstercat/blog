@@ -77,6 +77,29 @@ module.exports = function(opts){
       total: arr.length
     });
     add(files, join(filepath, 'tags', 'index.json'), Object.keys(tagmap));
+    var tags = Object.keys(tagmap);
+    for (var i=0; i<tags.length; i++) {
+      var tag = tags[i];
+      var tarr = tagmap[tag];
+      var tpages = Math.ceil(tarr.length / perpage);
+      for (var n=0; n<tpages; n++) {
+        var page = n + 1;
+        var obj = {
+          tag: tag,
+          page: page,
+          pages: tpages,
+          limit: perpage,
+          total: tarr.length,
+          results: tarr.slice(tpages * n, perpage)
+        };
+        add(files, join(filepath, 'tags', tag, 'pages', page+'.json'), obj);
+      }
+      add(files, join(filepath, 'tags', tag, 'index.json'), {
+        pages: tpages,
+        limit: perpage,
+        total: tarr.length
+      });
+    }
     add(files, join(filepath, 'home.json'), {
       results: arr.slice(0, 2)
     });
