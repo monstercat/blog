@@ -19,11 +19,15 @@ This is where the static API is generated.
 
 This file contains the first 2 posts metadata.
 
+#### /json/posts/X.json
+
+This file contains the metadata for the post.
+
 #### /json/archive/index.json
 
 This file describes the number of pages, pagination limits, total post count.
 
-#### /json/archive/page/**X**.json
+#### /json/archive/page/X.json
 
 This contains all the posts meta data that are found for X page.
 
@@ -31,12 +35,12 @@ This contains all the posts meta data that are found for X page.
 
 This contains a list of all the tags.
 
-#### /json/tags/**TAG**/index.json
+#### /json/tags/TAG/index.json
 
 This file describes the number of pages, pagination limits, total post count for
 the TAG.
 
-#### /json/tags/**TAG**/page/**X**.json
+#### /json/tags/TAG/page/X.json
 
 This contains all the posts meta data that are found for X page for TAG.
 

@@ -1,5 +1,5 @@
 var fs = require('fs');
-var join = require('path').join;
+var path = require('path');
 
 var excerptRE = /^[^\*\#\<\-]/;
 function getExcerpt(post) {
@@ -66,6 +66,11 @@ module.exports = function(opts){
     var arr = metalsmith.metadata().posts.map(mapPost).sort(sortPost);
     var tagmap = buildTagMap(arr);
     var pages = Math.ceil(arr.length / perpage);
+    for (var i=0; i<arr.length; i++) {
+      var obj = arr[i]
+      var opath = path.join(path.dirname(obj.path), path.basename(obj.path, path.extname(obj.path)) + '.json')
+      add(files, path.join(filepath, opath), obj);
+    }
     for (var i=0; i<pages; i++) {
       var page = i + 1
       var obj = {
@@ -75,14 +80,14 @@ module.exports = function(opts){
         total: arr.length,
         results: arr.slice(pages * i, perpage)
       }
-      add(files, join(filepath, 'archive', 'pages', page+'.json'), obj);
+      add(files, path.join(filepath, 'archive', 'pages', page+'.json'), obj);
     }
-    add(files, join(filepath, 'archive', 'index.json'), {
+    add(files, path.join(filepath, 'archive', 'index.json'), {
       pages: pages,
       limit: perpage,
       total: arr.length
     });
-    add(files, join(filepath, 'tags', 'index.json'), Object.keys(tagmap));
+    add(files, path.join(filepath, 'tags', 'index.json'), Object.keys(tagmap));
     var tags = Object.keys(tagmap);
     for (var i=0; i<tags.length; i++) {
       var tag = tags[i];
@@ -98,15 +103,15 @@ module.exports = function(opts){
           total: tarr.length,
           results: tarr.slice(tpages * n, perpage)
         };
-        add(files, join(filepath, 'tags', tag, 'pages', page+'.json'), obj);
+        add(files, path.join(filepath, 'tags', tag, 'pages', page+'.json'), obj);
       }
-      add(files, join(filepath, 'tags', tag, 'index.json'), {
+      add(files, path.join(filepath, 'tags', tag, 'index.json'), {
         pages: tpages,
         limit: perpage,
         total: tarr.length
       });
     }
-    add(files, join(filepath, 'home.json'), {
+    add(files, path.join(filepath, 'home.json'), {
       results: arr.slice(0, 2)
     });
   };
