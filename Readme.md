@@ -27,7 +27,7 @@ This file contains the metadata for the post.
 
 This file describes the number of pages, pagination limits, total post count.
 
-#### /json/archive/page/X.json
+#### /json/archive/pages/X.json
 
 This contains all the posts meta data that are found for X page.
 
@@ -40,7 +40,7 @@ This contains a list of all the tags.
 This file describes the number of pages, pagination limits, total post count for
 the TAG.
 
-#### /json/tags/TAG/page/X.json
+#### /json/tags/TAG/pages/X.json
 
 This contains all the posts meta data that are found for X page for TAG.
 
