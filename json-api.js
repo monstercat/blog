@@ -73,12 +73,14 @@ module.exports = function(opts){
     }
     for (var i=0; i<pages; i++) {
       var page = i + 1
+      var items = arr.slice(perpage * i, (perpage * i) + perpage)
       var obj = {
         page: page,
         pages: pages,
+        count: items.length,
         limit: perpage,
         total: arr.length,
-        results: arr.slice(pages * i, perpage)
+        results: items
       }
       add(files, path.join(filepath, 'archive', 'pages', page+'.json'), obj);
     }
@@ -94,14 +96,16 @@ module.exports = function(opts){
       var tarr = tagmap[tag];
       var tpages = Math.ceil(tarr.length / perpage);
       for (var n=0; n<tpages; n++) {
+        var items = tarr.slice(perpage * n, (perpage * n) + perpage)
         var page = n + 1;
         var obj = {
           tag: tag,
           page: page,
           pages: tpages,
+          count: items.length,
           limit: perpage,
           total: tarr.length,
-          results: tarr.slice(tpages * n, perpage)
+          results: items
         };
         add(files, path.join(filepath, 'tags', tag, 'pages', page+'.json'), obj);
       }
