@@ -22,7 +22,7 @@ function getTags(post) {
 function mapPost(post) {
   var obj = {};
   obj.title   = post.title;
-  obj.date    = post.date;
+  obj.date    = new Date(post.date);
   obj.author  = post.author;
   obj.subline = post.subline;
   obj.image   = post.image;
