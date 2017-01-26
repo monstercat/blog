@@ -17,6 +17,14 @@ function makeKey(obj) {
 }
 
 Metalsmith(__dirname)
+  .use(function (files, metalsmith, done) {
+    Object.keys(files).forEach(function(file) {
+      var name = path.basename(file);
+      if (name.indexOf(".") == 0) {
+        delete files[file];
+      }
+    });
+  })
   .use(collections({
     posts:{
       pattern: 'posts/*.md',
