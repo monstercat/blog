@@ -54,8 +54,11 @@ Includes excerpts in the meta data by looking for the first markdown paragraph.
 
 ### Notes 
 
+ * Files starting with a period are ignored. (For vim etc.) 
  * Posts are all sorted by recent date.
  * Tags are a meta value simply separated by commas.
  * It is expected that images are hosted separately. We use an assets server.
  * It looks for markdown in `src/posts`.
+ * You can use the watch script to set up a service to rebuild when files are
+   changed.
 
