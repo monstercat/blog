@@ -24,6 +24,7 @@ Metalsmith(__dirname)
         delete files[file];
       }
     });
+    done();
   })
   .use(collections({
     posts:{
