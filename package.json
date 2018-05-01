@@ -4,12 +4,14 @@
   "description": "example metalsmith blog",
   "main": "index.js",
   "scripts": {
-    "build": "node index.js"
+    "build": "node index.js",
+    "serve": "web-build build serve -p 5500 -s build"
   },
   "author": "Thomas Mathews",
   "license": "ISC",
   "dependencies": {
-    "metalsmith": "^2.3.0"
+    "metalsmith": "^2.3.0",
+    "web-build": "github:monstercat/web-build"
   },
   "devDependencies": {
     "gaze": "^1.1.2"
