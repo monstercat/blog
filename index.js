@@ -11,7 +11,13 @@ function slug(str, opts){
 };
 
 function makeKey(url, obj) {
-  return path.join(path.dirname(url), slug(obj.title) + '.md')
+  let filename = obj.uri
+
+  if (!filename) {
+    filename = slug(obj.title)
+  }
+
+  return path.join(path.dirname(url), filename + '.md')
 }
 
 Metalsmith(__dirname)

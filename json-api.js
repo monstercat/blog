@@ -24,6 +24,7 @@ function mapPost(post) {
   obj.title   = post.title;
   obj.date    = new Date(post.date);
   obj.author  = post.author;
+  obj.uri     = post.uri;
   obj.subline = post.subline;
   obj.image   = post.image;
   obj.path    = post.path;
